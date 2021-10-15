@@ -1,0 +1,29 @@
+host bastionET2598
+hostname 188.95.227.101
+user ubuntu 
+IdentityFile ~/.ssh/secret
+
+host HAserver
+hostname 188.95.227.115
+user ubuntu 
+IdentityFile ~/.ssh/secret
+
+host serverA
+hostname 10.1.0.115
+port 22
+user ubuntu
+IdentityFile ~/.ssh/secret
+ProxyCommand ssh -W  %h:%p -q -A bastionET2598
+
+host serverB
+hostname 10.1.0.185
+user ubuntu
+IdentityFile ~/.ssh/secret
+ProxyCommand ssh -W  %h:%p -q -A bastionET2598
+
+host serverC
+hostname 10.1.0.18
+user ubuntu
+IdentityFile ~/.ssh/secret
+ProxyCommand ssh -W  %h:%p -q -A bastionET2598
+
